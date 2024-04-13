@@ -1,0 +1,11 @@
+include: gsm8k.yaml
+task: gsm8k_phi
+doc_to_text: "Instruct: {{question}}\nOutput:"
+doc_to_target: "{{answer}}" #" {{answer.split('### ')[-1].rstrip()}}"
+generation_kwargs:
+  until:
+    - "Instruct:"
+    - "</s>"
+    - "<|im_end|>"
+  do_sample: false
+  temperature: 0.0
